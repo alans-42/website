@@ -1,0 +1,381 @@
+<html>
+<head meta name="viewpoint" content="width=device-width, initial-scale=1"><title>AP Project</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://static.codehs.com/gulp/543092a2e852a62a5b0fe67a04e7d3321de6eec5/chs-js-lib/chs.js"></script>
+
+
+<style>
+.parallax {
+                background-image: url("https://codehs.com/uploads/dadd2d26c79005f16c6ea05014de2753");
+                height: 550px;
+                background-attachment: fixed;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                }
+.header {
+                background-color: linear-gradient(180deg, AliceBlue, SlateBlue);
+                padding: 5px;
+                text-align: center;
+                }
+            /*Nav Bar*/
+            .float{
+                float: left;
+                }
+            
+            li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 15px 20px;
+                text-decoration: none;
+                }
+
+            li a:hover {
+                background-color: RosyBrown;
+                }
+            
+            .navBar{
+                list-style-type: none;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: Salmon;
+                }
+                
+            /*Layout*/
+            section:after {
+                content: "";
+                display: table;
+                clear: both;
+                }
+
+            article {
+                padding: 20px;
+                background-color: linear-gradient(180deg, AliceBlue, SlateBlue);
+                height: 1800px;
+            }
+            
+            footer {
+                background-color: linear-gradient(180deg, AliceBlue, SlateBlue);
+                padding: 10px;
+                text-align: center;
+                color: Beige;
+                font-family: Georgia;
+            }
+            /*Big Text*/
+            h1 {
+                text-align: center;
+                font-size: 100px;
+                font-family: Georgia;
+                color: Salmon;
+            }
+            /*Gradient*/
+            body {
+                height 200px;
+                background-color: AliceBlue;
+                background-image: linear-gradient(180deg, AliceBlue, SlateBlue);
+            }
+            /*Table Stuff*/
+            table, th, td {
+            border: 10px solid Salmon;
+            border-collapse: collapse;
+            
+            }
+            
+            th, td {
+            padding: 18px;
+            font-size: 37px;
+            color: Beige;
+            }
+            
+            td {
+               width: 10000px; 
+            }
+canvas {
+    border: 1px solid black;
+    display: inline-block;
+    vertical-align: top;
+}
+
+pre {
+    border: 1px solid black;
+    display: inline-block;
+    width: 400px;
+    height: 500px;
+    background-color: #F5F5F5;
+}
+</style>
+
+</head>
+
+<body>
+<h1>AP Project Game</h1>
+        <ul style="position: sticky; top: 0;"  class="navBar">
+            <li class="float"><a class="active" href="http://alansoto.codehs.me/">Home</a></li>
+            <li class="float"><a href="news.html">News</a></li>
+            <li class="float"><a href="https://www.instagram.com/alan42_/">Contact</a></li>
+            <li class="float"><a href="#about">About</a></li>
+            <li class="float"><a href="game.html">Game</a></li>
+        </ul>
+
+<div style = "text-align:center;">
+    <canvas
+    width="400"
+    height="500"
+    class="codehs-editor-canvas"></canvas>
+</div>
+
+<script>
+window.onload = function() {
+
+    // Creates the ship 
+var ship = new WebImage("https://codehs.com/uploads/033f30bc20e0c99452958c7d7cf1664a");
+ship.setSize(80,43);
+// Time for how fast enemies move
+var enemySpeed = 450;
+// Time for how fast enemies spawn
+var enemySpawn = 2000;
+// The score of the player
+var score = 0;
+var scoreText;
+var level = 2;
+// Multiplier used for high score
+var multiplier = 1;
+// Creates the bacground
+var background = new WebImage("https://codehs.com/uploads/7f6577d15b40cc4a9932c3ce37c2008e");
+background.setSize(400, getHeight());
+background.setPosition(0, 0);
+// Creates menu
+var menu = new Rectangle(300, 100);
+menu.setColor(Color.red);
+menu.setPosition(50, 100);
+// Creates start text
+var startText = new Text("Click Q to Start", "30pt Ariel");
+startText.setColor(Color.black);
+startText.setPosition(75, 400);
+// Creates title
+var title = new Text("Invasion", "30pt Ariel");
+title.setColor(Color.black);
+title.setPosition(128, 160);
+// Creates the help screen
+var help = new Text("Use A & D to move and L to shoot", "15pt Ariel");
+help.setColor(Color.black);
+help.setPosition(55, 180);
+// Creates level screen
+var levelScreen = new Text("Level " + level, "30pt Ariel");
+// Objects needed for end screen
+var end = new WebImage("https://codehs.com/uploads/274a2abd8a628e9989798d7d526e4738");
+end.setSize(getWidth(), getHeight());
+var endScreen = new Rectangle(300, 100);
+endScreen.setColor(Color.red);
+endScreen.setPosition(50, 100);
+var endText = new Text("Game Over", "25pt Ariel");
+endText.setPosition(120, 140);
+var restartText = new Text("Click Q to Restart", "30pt Ariel");
+restartText.setColor(Color.white);
+restartText.setPosition(52, 400);
+// Creates list for lives
+var livesList = [];
+// Array for missiles and enemies
+var activeMissile = [];
+var activeEnemies = [];
+// Start function that shows the main menu
+function start(){
+    addMainMenu();
+    keyDownMethod(startGame);
+}
+// Adds the main menu
+function addMainMenu(){
+    add(background);
+    add(menu);
+    add(title);
+    add(startText);
+}
+// Moves the missile and detects if the missile hits an enemy
+function moveMissile(bullet){
+    bullet.move(0, -20);
+    if (bullet.getY() < 1){
+        remove(bullet);
+        activeMissile.remove(bullet);
+    }
+    
+    for (var i = 0; i < activeEnemies.length; i++){
+        if (activeEnemies[i].containsPoint(bullet.getX(), bullet.getY())){
+            remove(activeEnemies[i]);
+            activeMissile.splice(bullet);
+            activeEnemies.splice(i, 1);
+            score += 100;
+            remove(scoreText);
+            scoreText = new Text(score, "30pt Ariel");
+            scoreText.setPosition(300, 50);
+            add(scoreText);
+            break;
+        }
+    }
+}
+    
+// Function allowing the ship to shoot
+function shoot(){
+    var shipPositionX = ship.getX();
+    var shipPositionY = ship.getY();
+    var missile = new Oval(7, 10);
+    missile.setColor(Color.orange);
+    missile.setPosition(shipPositionX + 40, shipPositionY);
+    activeMissile.push(missile);
+    add(missile);
+    setTimer(moveMissile, 80, missile); 
+}
+// Starts the game and gamplay
+function startGame(e){
+    if(e.keyCode == Keyboard.letter('q')){
+        resetGame();
+        add(background);
+        add(help);
+        gameplay();
+        displayLives();
+    }
+}
+// The gameplay which adds the ships and ability to move & shoot
+function gameplay(){
+    ship.setPosition(getWidth()/2 - 40, 430);
+    add(ship);
+    keyDownMethod(shipMovements);
+    setTimer(addEnemies, enemySpawn);
+    displayScore();
+    setTimer(checkHighScore, 0);
+}
+// Displays the score
+function displayScore(){
+    scoreText = new Text(score, "30pt Ariel");
+    scoreText.setPosition(300, 50);
+    add(scoreText);
+}
+// Allows the ship to move and shoot
+function shipMovements(e){
+    if (e.keyCode == Keyboard.letter('a')){
+        remove(help);
+        ship.move(-15,0);
+        if(ship.getX() < -5){
+            ship.move(15, 0);
+        }
+    }
+    if (e.keyCode == Keyboard.letter('d')){
+        remove(help);
+        ship.move(15,0);
+        if(ship.getX() > 335){
+            ship.move(-15, 0);
+        }
+    }
+    if(e.keyCode == Keyboard.letter('l')){
+        remove(help);
+        shoot();
+        remove(levelScreen);
+    }
+}
+// Moves the enemy and removes the bullet after reaching a certain point
+function moveEnemy(enemy){
+        enemy.move(0, 20);
+        checkForEnemyInvasion(enemy);
+    }
+// Spawns the enemies
+function addEnemies(){
+    var enemy = new WebImage("https://codehs.com/uploads/8046184761cbb123a89b56b1db4f62ae");
+    enemy.setSize(40, 40);
+    activeEnemies.push(enemy);
+    var x = Randomizer.nextInt(20, 355);
+    enemy.setPosition(x, -40);
+    add(enemy);
+    setTimer(moveEnemy, enemySpeed, enemy);
+}
+// Checks the highscore and speeds up the game
+function checkHighScore(){
+    if(score == 1000 * multiplier){
+        enemySpeed -= 50;
+        enemySpawn -= 450;
+        multiplier++;
+        makeLevelScreen();
+    }
+}
+// Makes level screen
+function makeLevelScreen(){
+    levelScreen = new Text("Level " + level, "30pt Atari");
+    levelScreen.setColor(Color.black);
+    levelScreen.setPosition(128, 160);
+    add(levelScreen);
+    level++;
+}
+// Checks to see if the player loses a life
+function checkForEnemyInvasion(enemy){
+    for(var i = 0; i < activeEnemies.length; i++){
+            if(activeEnemies[i].getY() > 360){
+                activeEnemies.remove(enemy);
+                remove(enemy);
+                removeLife();
+            }
+        }
+}
+// Displays the lives on the screen
+function displayLives(){
+    for (var i = 1; i < 4; i++){
+        var lives = new WebImage("https://codehs.com/uploads/50c64ecdebd865a49288830cc803eb32");
+        lives.setSize(30, 30);
+        lives.setPosition(i*15, 20);
+        add(lives);
+        livesList.push(lives);
+    }
+    
+}
+// Removes a life after an enemy invades
+function removeLife(){
+    remove(livesList[livesList.length - 1]);
+    var lostLife = livesList.pop();
+    if(livesList.length == 0){
+        gameOver();
+    }
+}
+// Displays the gameover screen
+function gameOver(){
+    var x = 128;
+    if(score == 0){
+        x = 140;
+    }
+    if(score >= 1000){
+        x = 118;
+    }
+    var endText2 = new Text("Score: " + score, "25pt Ariel");
+    endText2.setPosition(x, 180);
+    removeAll();
+    stopAllTimers();
+    add(end);
+    add(endScreen);
+    add(restartText);
+    add(endText);
+    add(endText2);
+    keyDownMethod(startGame);
+}
+function resetGame(){
+    stopAllTimers();
+    removeAll();
+    enemySpeed = 450;
+    enemySpawn = 2000;
+    score = 0;
+    level = 2;
+    multiplier = 1;
+    activeMissile = [];
+    activeEnemies = [];
+    livesList = [];
+}
+
+
+    if (typeof start === 'function') {
+        start();
+    }
+};
+</script>
+
+</body>
+</html>
