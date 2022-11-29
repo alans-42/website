@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html>
-    <head meta name="viewpoint" content="width=device-width, initial-scale=1">
+    <head>
+        <meta name="viewpoint" content="width=device-width, initial-scale=1">
         <title>
             Alan Soto's Webpage
         </title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
             <style>
-            /*Gradient*/
-            .header {
-                background-color: linear-gradient(180deg, AliceBlue, SlateBlue);
-                padding: 5px;
-                text-align: center;
-                }
             /*Nav Bar*/
             .float{
                 float: left;
                 }
+
+            .active {
+                background-color: #fcbaba;
+            }
             
             li a {
                 display: block;
@@ -25,9 +24,9 @@
                 text-decoration: none;
                 }
 
-            li a:hover {
+            li a:hover:not(.active) {
                 background-color: RosyBrown;
-                }
+            }
             
             .navBar{
                 list-style-type: none;
@@ -46,18 +45,10 @@
                 }
 
             article {
-                padding: 20px;
-                background-color: linear-gradient(180deg, AliceBlue, SlateBlue);
+                padding: 25px;
                 height: 1800px;
             }
-            
-            footer {
-                background-color: linear-gradient(180deg, AliceBlue, SlateBlue);
-                padding: 10px;
-                text-align: center;
-                color: Beige;
-                font-family: Georgia;
-            }
+
             /*Big Text*/
             h1 {
                 text-align: center;
@@ -67,8 +58,7 @@
             }
             /*Gradient*/
             body {
-                height 200px;
-                background-color: AliceBlue;
+                background-color: #fcbaba;
                 background-image: linear-gradient(180deg, AliceBlue, SlateBlue);
             }
             /*Table Stuff*/
@@ -91,16 +81,15 @@
     </head>
     
     <body>
-        <div class="header">
         <h1>Food News</h1>
-        </div>
         
         <ul style="position: sticky; top: 0;"  class="navBar">
-            <li class="float"><a class="active" href="https://sotoalan.com">Home</a></li>
-            <li class="float"><a href="news.html">News</a></li>
+            <li class="float"><a href="https://sotoalan.com">Home</a></li>
+            <li class="float"><a class="active">News</a></li>
             <li class="float"><a href="https://www.instagram.com/alan42_/">Contact</a></li>
             <li class="float"><a href="https://sotoalan.com/#about">About</a></li>
             <li class="float"><a href="game.html">Game</a></li>
+            <li class="float"><a href="Jeses.html">Jess</a></li>
         </ul>
         
         <p></p>
@@ -108,7 +97,7 @@
         <article>
         
         <h1><u>What I think I Ate Last Week</u></h1>
-        <table style="width=100%">
+        <table style="width: 100%">
             <tr>
                 <th>Sunday</th>
                 <td>Probably Pizza</td>
@@ -139,14 +128,12 @@
             </tr>
         </table>
         
-        <h1><u>What I ate in 2016</u><h1>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/sn6QJn_zi_Q" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+        <h1><u>What I ate in 2016</u></h1>
+            <div style="text-align: center;">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/sn6QJn_zi_Q" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
         </article>
         </section>
-        
-        <footer>
 
-        </footer>
     </body>
 </html>
