@@ -1,151 +1,36 @@
 <!DOCTYPE html>
-<html style="height: 3250px; background: #fcbaba linear-gradient(to bottom, AliceBlue, SlateBlue);">
+<html lang="en">
+
     <head>
-        <meta name="viewpoint" content="width=device-width, initial-scale=1">
-        <title>
-            Alan Soto's Webpage
-        </title>
-        
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-            <style>
-            /*Cat Pic*/
-            .parallax {
-                background-image: url("https://codehs.com/uploads/dadd2d26c79005f16c6ea05014de2753");
-                height: 550px;
-                background-attachment: fixed;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-                }
-            /*Nav Bar*/
-            .float{
-                float: left;
-                }
-
-            .active {
-                background-color: #fcbaba;
-            }
-            
-            li a {
-                display: block;
-                color: white;
-                text-align: center;
-                padding: 15px 20px;
-                text-decoration: none;
-                }
-
-            li a:hover:not(.active) {
-                background-color: RosyBrown;
-                }
-            
-            .navBar{
-                list-style-type: none;
-                width: 100%;
-                margin: 0;
-                padding: 0;
-                overflow: hidden;
-                background-color: Salmon;
-                }
-                
-            /*Layout*/
-            section:after {
-                content: "";
-                display: table;
-                clear: both;
-                }
-            /*Big Text*/
-            h1 {
-                text-align: center;
-                font-size: 100px;
-                font-family: Georgia;
-                color: Salmon;
-            }
-            /*Title fonts*/
-            .BigFont{
-            font-size: 134px;
-            font-family: Georgia;
-            color: Beige;
-            }
-            
-            #toRight{
-                text-align: right;
-            }
-            #toLeft{
-                text-align: left;
-            }
-            #noBullets{
-                list-style-type: none;
-            }
-            
-            #border {
-                border: 5px groove black;
-                border-radius: 15px;
-                }
-            </style>
-            
+        <meta charset="utf-8" content="width=device-width, initial-scale=1">
+        <title>Alan Soto</title>
+        <link rel="icon" type="image/png" href="assets/cat.png">
+        <link rel="stylesheet" href="css/style.css">
     </head>
-    
-    <body>
-        <h1>Welcome To My Website</h1>
-        
-        <ul style="position: sticky; top: 0;"  class="navBar">
-            <li class="float"><a class="active">Home</a></li>
-            <li class="float"><a href="news.html">News</a></li>
-            <li class="float"><a href="https://www.instagram.com/alan42_/" target="_blank">Contact</a></li>
-            <li class="float"><a href="#about">About</a></li>
-            <li class="float"><a href="game.html">Game</a></li>
-            <li class="float"><a href="Jeses.html">Jess</a></li>
-        </ul>
-        <!--Cat Pic-->
-        <p></p>
-        <div class="parallax"></div>
-        <section>
-        <article>
-        <h1><u>Who Is Alan Soto?</u></h1>
-        <a href="https://www.google.com/search?q=big+cheese&source=lmns&bih=649&biw=1366&rlz=1CAPPDO_enUS918&safe=active&hl=en&sa=X&ved=2ahUKEwi28NLBv7DsAhWBazABHQMbDRwQ_AUoAHoECAEQAA">
-        <img id="border" src="https://codehs.com/uploads/b53c831a6c4360942e672df5e07bddc4" alt="Big Cheese" style="float:right; height:700px; width:550px;">
-        </a>
-        <!--Man, Myth, Legend-->
-        <div id="toLeft">
-        <p>
+    <!-- Main Body -->
+    <body class="background">
+        <!-- Nav Bar -->
         <ul>
-            <li id="noBullets" class="BigFont">Man?</li>
-                <ul>
-                    <li id="noBullets" style="color: BurlyWood; font-size: 75px;">Not really, under 18</li>
-                </ul>
-            <li id="noBullets" class="BigFont">Myth?</li>
-                <ul>
-                    <li id="noBullets" style="color: BurlyWood; font-size: 75px;">Nah I'm alive</li>
-                </ul>
-            <li id="noBullets" class="BigFont">Legend?</li>
-                <ul>
-                    <li id="noBullets" style="color: BurlyWood; font-size: 75px;">Yes</li>
-                </ul>
+            <li><a class="active" href="index.html">Home</a></li>
+            <li><a href="about.html">About Me</a></li>
+            <li><a href="#other">Other</a></li>
+            <li><a href="#gallery">Gallery</a></li>
         </ul>
-        </div>
-            <h2 style="font-size:1px" id="about"> </h2>
-        <h1><u>About Alan</u></h1>
-        <p>
-        <a href="https://www.niagarafallsstatepark.com/">
-        <img id="border" src="https://codehs.com/uploads/5098042cf3394f9ef42de66b72c5892c" alt="Big Cheese" style="float:left;height:700px; width:500px;">
-        </a>
-        <div id="toRight">
-        <ul>
-            <li id="noBullets" style="color: BurlyWood; font-size: 55px;">
-                Alan is a pretty cool guy
-                that just so happened to
-                make the website you are currently viewing right
-                now. Ain't it sick? <br>Well here are some quick facts about him if you're interested</li>
-            <ul>
-                <li id="noBullets" style="color: BurlyWood; font-size: 55px;">1. I have a cat</li>
-                <li id="noBullets" style="color: BurlyWood; font-size: 55px;">2. I am legally able to officiate a wedding in 5 months</li>
-                <li id="noBullets" style="color: BurlyWood; font-size: 55px;">3. I run</li>
-            </ul>
-        </ul>
-        </div>
-
-        </article>
-        </section>
+        <br>
+        <!-- Text Paragraph -->
+        <img src="assets/me.jpg" alt="A picture of the creator of the website, me, Alan Soto" class="center" style="width: 400px;height: 480px;border-radius: 5%;">
+        <p class="caption">
+            Hello!<br>
+            My name is Alan Soto and this is my website!<br>
+            I hope you have a look around, but feel free to contact me with any of my socials.
+        </p>
+        <!-- Logos at bottom -->
+        <h3 style="text-align: center;">
+            <a href="https://github.com/alans-42" target="_blank">
+                <img src="assets/github-mark.png" alt="Git Hub logo" style="width: 40px; height: 40px;"></a>
+            <a href="https://www.linkedin.com/in/alan-d-soto/" target="_blank">
+                <img src="assets/linkedin.png" alt="Linkedin logo" style="width: 40px; height: 40px;"></a>
+        </h3>
 
     </body>
 </html>
