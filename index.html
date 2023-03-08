@@ -5,31 +5,33 @@
         <meta charset="utf-8" content="width=device-width, initial-scale=1">
         <title>Alan Soto</title>
         <link rel="icon" type="image/png" href="assets/cat.png">
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" media="only screen and (orientation: landscape)" href="css/style.css">
+        <link rel="stylesheet" media="only screen and (orientation: portrait)" href="css/mobile.css">
     </head>
     <!-- Main Body -->
     <body class="background">
         <!-- Nav Bar -->
-        <ul>
-            <li><a class="active" href="index.html">Home</a></li>
-            <li><a href="about.html">About Me</a></li>
-            <li><a href="#other">Other</a></li>
-            <li><a href="#gallery">Gallery</a></li>
+        <ul class="navbar">
+            <li class="float"><a class="active" href="index.html">Home</a></li>
+            <li class="float"><a href="about.html">About Me</a></li>
+            <li class="float"><a href="#other">Other</a></li>
+            <li class="float"><a href="#gallery">Gallery</a></li>
         </ul>
         <br>
         <!-- Text Paragraph -->
-        <img src="assets/me.jpg" alt="A picture of the creator of the website, me, Alan Soto" class="center" style="width: 400px;height: 480px;border-radius: 5%;">
+        <img src="assets/me.jpg" alt="A picture of the creator of the website, me, Alan Soto" class="me" style="border-radius: 5%; max-width: 100%;">
         <p class="caption">
             Hello!<br>
             My name is Alan Soto and this is my website!<br>
-            I hope you have a look around, but feel free to contact me with any of my socials.
+            This is still a work in progress but<br> <!--Filler -->
+            I hope you have a look around and feel free to contact me with any of my socials.
         </p>
         <!-- Logos at bottom -->
         <h3 style="text-align: center;">
             <a href="https://github.com/alans-42" target="_blank">
-                <img src="assets/github-mark.png" alt="Git Hub logo" style="width: 40px; height: 40px;"></a>
+                <img src="assets/github-mark.png" alt="Git Hub logo" class="icons"></a>
             <a href="https://www.linkedin.com/in/alan-d-soto/" target="_blank">
-                <img src="assets/linkedin.png" alt="Linkedin logo" style="width: 40px; height: 40px;"></a>
+                <img src="assets/linkedin.png" alt="Linkedin logo" class="icons"></a>
         </h3>
 
     </body>
