@@ -14,6 +14,7 @@ h1 {
     text-align: center;
     font-family: Courier, monospace;
     font-size: 120%;
+    line-height: 1.5;
 }
 
 .background {
@@ -31,6 +32,44 @@ h1 {
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* about.html */
+.mk {
+    font-size: 100%;
+    background: linear-gradient(to left, #1900ff, #ff8000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.roof {
+    max-width: 100%;
+    max-height: 600px;
+    padding-left: 0px;
+    float: left;    
+    margin: 0 25px 0 15px;
+    border-radius: 5%;
+}
+
+/* gallery.html */
+.gallery-long {
+    max-width: 100%;
+    max-height: 500px;
+    float: center;
+    border-radius: 5%;
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+}
+
+.gallery-wide {
+    max-width: 100%;
+    max-height: 500px;
+    float: center;
+    border-radius: 5%;
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
 }
 
 /* NavBar */
@@ -57,7 +96,7 @@ li a {
     display: block;
     color: white;
     text-align: center;
-    padding: 15px 20px;
+    padding: 15px 35px;
     text-decoration: none;
 }
   
