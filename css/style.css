@@ -51,6 +51,10 @@ h1 {
     border-radius: 5%;
 }
 
+#left {
+    text-align: left;
+}
+
 /* gallery.html */
 .gallery-long {
     max-width: 100%;
